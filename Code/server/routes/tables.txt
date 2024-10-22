@@ -1,0 +1,53 @@
+CREATE TABLE usuarios (
+	login VARCHAR(50) PRIMARY KEY,
+	senha VARCHAR(50) NOT NULL,
+	tipo VARCHAR(50) NOT NULL 
+);
+
+CREATE TABLE professores (
+	cpf INT PRIMARY KEY, 
+	login VARCHAR(50) REFERENCES usuarios(login), 
+	nome VARCHAR(50) NOT NULL,
+	instituicao VARCHAR(50) NOT NULL,
+	departamento VARCHAR(50) NOT NULL,
+	moedas DECIMAL(10, 2)
+);
+
+CREATE TABLE alunos (
+	cpf INT PRIMARY KEY, 
+	login VARCHAR(50) REFERENCES usuarios(login), 
+	nome VARCHAR(50) NOT NULL,
+	instituicao VARCHAR(50) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	curso VARCHAR(50) NOT NULL,
+	moedas DECIMAL(10, 2)
+);
+
+CREATE TABLE parceiros(
+	cnpj INT PRIMARY KEY, 
+	login VARCHAR(50) REFERENCES usuarios(login), 
+	nome VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE enderecos (
+	id SERIAL PRIMARY KEY, 
+	aluno_cpf INT REFERENCES alunos(cpf),
+	rua VARCHAR(50) NOT NULL,
+	numero int NOT NULL,
+	bairro VARCHAR(50) NOT NULL,
+	cep VARCHAR(50) NOT NULL,
+	complemento VARCHAR(50)
+);
+
+CREATE TABLE transacoes (
+	id SERIAL PRIMARY KEY, 
+	professor_cpf INT REFERENCES professores(cpf),
+	aluno_cpf INT REFERENCES alunos(cpf),
+	quantidade DECIMAL(10, 2) NOT NULL,
+	motivo VARCHAR(50)
+);
+
+CREATE TABLE premios (
+	id SERIAL PRIMARY KEY, 
+	parceiro_cnpj INT REFERENCES parceiros(cnpj)
+);
