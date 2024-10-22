@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
     const { cpf, login, nome, instituicao, email, curso, moedas } = req.body;
     try {
         const result = await connection.query(
-            'INSERT INTO alunos (cpf, login, nome, instituicao, email, curso, moedas) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+            'INSERT INTO aluno (cpf, login, nome, instituicao, email, curso, moedas) VALUES ($1, $2, $3, $4, $5, $6, $7)',
             [cpf, login, nome, instituicao, email, curso, moedas]
         );
         res.json(result.rows[0]);
