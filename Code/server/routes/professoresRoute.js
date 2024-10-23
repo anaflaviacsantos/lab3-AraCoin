@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import connection from "../controllers/index.js";
 
 const router = express.Router();
@@ -68,6 +69,21 @@ router.delete('/:id', async (req, res) => {
             return res.status(404).json({ message: 'Professor não encontrado' });
         }
         res.status(200).json({ message: 'Professor excluído com sucesso' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Rota para aumentar em 1000 créditos as moedas de todos os professores
+router.post('/incrementar-moedas', async (req, res) => {
+    try {
+        const result = await connection.query(
+            'UPDATE professores SET moedas = moedas + 1000 RETURNING *'
+        );
+        res.status(200).json({
+            message: 'Moedas aumentadas em 1000 para todos os professores',
+            professores: result.rows,
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
