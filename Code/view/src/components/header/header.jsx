@@ -16,10 +16,10 @@ const Header = ({ open, setOpened }) => {
         />
         <div>
           <Title order={1} style={{ color: 'white', textAlign: 'center' }}>
-            SisMatricula
+            Aracoin
           </Title>
           <Text style={{ color: '#cccccc', textAlign: 'center', marginTop: '5px' }}>
-            Sistema de Gestão de Matrículas
+            
           </Text>
         </div>
       </Container>

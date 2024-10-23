@@ -8,10 +8,9 @@ import Link from 'next/link';
 const mockdata = [
   { label: 'Home', link: '/' },
   { label: 'Aluno', link: '/aluno ' },
-  { label: 'Professor', link: '/Professor ' },
-  { label: 'Secretario', link: '/secretario' },
+  { label: 'Professor', link: '/professor' },
   { label: 'Login', link: '/login ' },
-  { label: 'Perfil do aluno ', link: '/PerfilAluno ' }
+  { label: 'Empresas', link: '/empresas ' }
 ];
 
 export default function Navbar({ opened }) {

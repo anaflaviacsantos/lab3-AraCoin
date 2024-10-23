@@ -9,7 +9,7 @@ function home() {
     <MantineProvider>
         <div>
           {/* Conteúdo da sua página */}
-          <h1>Bem-vindo ao SisMatricula!</h1>
+          <h1>Bem-vindo ao Aracoin!</h1>
           {/* Outros componentes ou conteúdo específico da página */}
         </div>
       </MantineProvider>
