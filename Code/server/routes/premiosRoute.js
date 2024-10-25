@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
 
 // Criar um novo prêmio
 router.post('/', async (req, res) => {
-    const { parceiro_cnpj } = req.body;
+    const { nome, custo, parceiro_cnpj } = req.body;
     try {
         const result = await connection.query(
-            'INSERT INTO premios (parceiro_cnpj) VALUES ($1) RETURNING *',
-            [parceiro_cnpj]
+            'INSERT INTO premios (nome, custo, parceiro_cnpj) VALUES ($1, $2, $3) RETURNING *',
+            [nome, custo, parceiro_cnpj]
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
@@ -45,11 +45,11 @@ router.get('/:id', async (req, res) => {
 // Atualizar um prêmio pelo ID
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { parceiro_cnpj } = req.body;
+    const { nome, custo, parceiro_cnpj } = req.body;
     try {
         const result = await connection.query(
-            'UPDATE premios SET parceiro_cnpj = $1 WHERE id = $2 RETURNING *',
-            [parceiro_cnpj, id]
+            'UPDATE premios SET nome = $1, custo = $2, parceiro_cnpj = $3 WHERE id = $4 RETURNING *',
+            [nome, custo, parceiro_cnpj, id]
         );
         if (result.rows.length === 0) {
             return res.status(404).json({ message: 'Prêmio não encontrado' });

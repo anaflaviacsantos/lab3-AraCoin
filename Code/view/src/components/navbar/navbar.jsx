@@ -7,7 +7,8 @@ import Link from 'next/link';
 
 const mockdata = [
   { label: 'Home', link: '/' },
-  { label: 'Aluno', link: '/aluno ' },
+  { label: 'Cadastro de Aluno', link: '/cadastroAluno ' },
+  { label: 'Informações de alunos', link: '/PerfilAluno ' },
   { label: 'Professor', link: '/professor' },
   { label: 'Login', link: '/login ' },
   { label: 'Empresas', link: '/empresas ' }
